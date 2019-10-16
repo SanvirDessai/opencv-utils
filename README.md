@@ -62,6 +62,8 @@ objects = motionDetector.detect(frame, frame2)
 ```
 Run the demo from the cli using `$ python src/motion.driver.py`
 
+![](assets/motion.gif)
+
 #
 ### Contributions
 
