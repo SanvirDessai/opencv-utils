@@ -46,7 +46,7 @@ fps.fps() // 123.45
 ```
 
 #### Motion Detector
-This is a simplistic implementation of motion detection using background subtraction. The absolute difference between to successive frames is processed to obtain <em>motion<em>. The closed contours are then found to obtain a list of detected moving objects in the video stream.
+This is a simplistic implementation of motion detection using background subtraction. The absolute difference between to successive frames is processed to obtain <em>motion</em>. The closed contours are then found to obtain a list of detected moving objects in the video stream.
 ```markdown
 from motion import MotionDetector
 
@@ -60,6 +60,7 @@ motionDetector.enableDifferenceImage()
 objects = motionDetector.detect(frame, frame2)
 // [[ x1, y1, x2, y2 ], ..., [ x1, y1, x2, y2 ]]
 ```
+Run the demo from the cli using `$ python src/motion.driver.py`
 
 #
 ### Contributions
