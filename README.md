@@ -64,6 +64,26 @@ Run the demo from the cli using `$ python src/motion.driver.py`
 
 ![](assets/motion.gif)
 
+#### Object Tracker
+This is a simplistic implementation of object tracking using OpenCV's built in tracking algorithms. A tracker is initialised with a bounding box around the object to be tracked. The tracker then attempts to identify the object in successive frames. 
+```markdown
+from tracker import ObjectTracker
+
+# Initialize tracker with frame and bounding box
+obj = ObjectTracker(frame, bbox, 'KCF')
+
+# Update tracker every frame
+obj.update(frame)
+
+# Access object location from bounding box
+x1 = obj._bbox[0]
+y1 = obj._bbox[1]
+```
+
+Run the demo from the cli using `$ python src/objectTracker.driver.py`
+
+![](assets/tracking.gif)
+
 #
 ### Contributions
 
