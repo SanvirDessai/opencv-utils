@@ -59,6 +59,7 @@ motionDetector.enableDifferenceImage()
 # result is an array of bounding rectangles described by their top-left and bottom-right coordinates in the form [x1, y1, x2, y2]
 objects = motionDetector.detect(frame, frame2)
 // [[ x1, y1, x2, y2 ], ..., [ x1, y1, x2, y2 ]]
+
 ```
 Run the demo from the cli using `$ python src/motion.driver.py`
 
@@ -78,13 +79,41 @@ obj.update(frame)
 # Access object location from bounding box
 x1 = obj._bbox[0]
 y1 = obj._bbox[1]
+
 ```
 
 Run the demo from the cli using `$ python src/objectTracker.driver.py`
 
 ![](assets/tracking.gif)
 
+#### Object Detector
+This class is a basic wrapper for OpenCV's cascade classifier detector. A classifier instance is created by selecting one of the included models, and given a frame, will attempt to find the objects of interest. Classifiers are trained as describered here https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html
+
+```markdown
+from objectDetector import ObjectDetector
+
+# Initialize a detector
+faceDetector = ObjectDetector(model='FRONTAL_FACE', minSize=35)
+
+# Grab a frame or image
+ret, frame = capture.read()
+
+# detect objects
+objects = faceDetector.detect(frame)
+// [[ x, y, w, h ], ..., [ x, y, w, h ]]
+
+```
+Run the demo from the cli using `$ python src/objectDetector.driver.py`
+
+The detector will only be as good as the classifier it uses. In this case the default frontal face classifier performs with 92% accuracy. It errors with a false positive in the top-right corner image and a false negative in the bottom, second to right image. For the best results, a custom classifier should be trained for the specific use case. 
+
+![](assets/detectedFaces.jpg)
+
 #
 ### Contributions
 
-Pull requests are welcome. 
+Pull requests are welcome. Simply create a new class and an associated driver script which demonstrates its use, following the naming convention of the exisitng source files.
+
+#
+### License
+The MIT License (MIT) 
